@@ -1,0 +1,23 @@
+img{
+    width:400px;
+    height: 400px;
+}
+
+button{
+    font-size: 20px;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    
+}
+
+#report {
+    text-align: justify;
+    width:800px;
+    margin:0 auto;
+    padding: 40px;
+}
+
