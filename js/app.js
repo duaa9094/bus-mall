@@ -74,27 +74,27 @@ function renderThreeProducts() {
 
   firstIndex = genrateRandomIndex();//9 for example
   while (threeIndexes.includes(firstIndex)) {
-    
+
     firstIndex = genrateRandomIndex();
   }
 
   secondIndex = genrateRandomIndex();
   while (secondIndex === firstIndex || threeIndexes.includes(secondIndex)) {
-    
+
     secondIndex = genrateRandomIndex();
 
   }
 
   thirdIndex = genrateRandomIndex();
   while (thirdIndex === secondIndex || thirdIndex === firstIndex || threeIndexes.includes(thirdIndex)) {
-    
+
     thirdIndex = genrateRandomIndex();
 
   }
 
-  threeIndexes[0]=firstIndex;
-  threeIndexes[1]=secondIndex;
-  threeIndexes[2]=thirdIndex;
+  threeIndexes[0] = firstIndex;
+  threeIndexes[1] = secondIndex;
+  threeIndexes[2] = thirdIndex;
 
   console.log(threeIndexes);
 
@@ -165,6 +165,8 @@ function vote(event) {
   }
 
   console.log(count);
+
+  saveToLS();
 }
 
 
@@ -187,7 +189,7 @@ function showList(event) {
     arrayOfShown.push(products[i].timesShown);
   }
   drawChart();
-  button.removeEventListener('click',showList);
+  button.removeEventListener('click', showList);
 }
 
 function drawChart() {
@@ -215,11 +217,37 @@ function drawChart() {
 
 }
 
+function saveToLS() {
+  localStorage.setItem("products", JSON.stringify(products));
+
+  localStorage.setItem('votes', count);
+
+}
 
 
+function getFromLS() {
+  let savedCount = localStorage.getItem("votes");
+  console.log(typeof savedCount);
+
+  if (savedCount !== null) {
+    count = parseInt(savedCount);
+  }
+
+  let savedProducts = localStorage.getItem('products');
+  // let tempProducts = JSON.parse(savedProducts);
+  if (savedProducts !== null) {
+    products = JSON.parse(savedProducts);
+  }
+
+  // console.log(tempProducts);
+  // products = tempProducts;
 
 
+  console.log('count = ' + count);
+  console.log(products);
+}
 
+getFromLS();
 
 
 
